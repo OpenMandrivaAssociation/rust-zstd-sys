@@ -1,0 +1,16 @@
+diff -up zstd-sys-1.4.15+zstd.1.4.4/build.rs.orig2 zstd-sys-1.4.15+zstd.1.4.4/build.rs
+--- zstd-sys-1.4.15+zstd.1.4.4/build.rs.orig2	2019-11-01 03:22:22.000000000 +0100
++++ zstd-sys-1.4.15+zstd.1.4.4/build.rs	2019-12-16 00:04:48.548762859 +0100
+@@ -134,9 +134,9 @@ fn compile_zstd() {
+ fn main() {
+     // println!("cargo:rustc-link-lib=zstd");
+ 
+-    if !PathBuf::from("zstd/lib").exists() {
+-        panic!("Folder 'zstd/lib' does not exists. Maybe you forget clone 'zstd' submodule?");
+-    }
++    //if !PathBuf::from("zstd/lib").exists() {
++    //    panic!("Folder 'zstd/lib' does not exists. Maybe you forget clone 'zstd' submodule?");
++    //}
+ 
+     let (defs, headerpaths) = if cfg!(feature = "pkg-config") {
+         pkg_config()

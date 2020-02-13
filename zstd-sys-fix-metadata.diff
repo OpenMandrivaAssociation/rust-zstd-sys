@@ -1,0 +1,32 @@
+--- zstd-sys-1.4.15+zstd.1.4.4/Cargo.toml       2019-11-05T19:38:26+00:00
++++ zstd-sys-1.4.15+zstd.1.4.4/Cargo.toml       2019-12-16T04:04:59.254547+00:00
+@@ -12,7 +12,7 @@
+ 
+ [package]
+ name = "zstd-sys"
+-version = "1.4.15+zstd.1.4.4"
++version = "1.4.15"
+ authors = ["Alexandre Bury <alexandre.bury@gmail.com>"]
+ build = "build.rs"
+ links = "zstd"
+@@ -25,7 +25,7 @@
+ [dependencies.libc]
+ version = "0.2.45"
+ [build-dependencies.bindgen]
+-version = "0.51"
++version = "0.52"
+ optional = true
+ 
+ [build-dependencies.cc]
+@@ -40,9 +40,10 @@
+ optional = true
+ 
+ [features]
+-default = ["legacy"]
++default = ["legacy", "pkgconfig"]
+ experimental = []
+ legacy = []
+ non-cargo = []
+ std = []
+ zstdmt = []
++pkgconfig = ["pkg-config", "bindgen"]
