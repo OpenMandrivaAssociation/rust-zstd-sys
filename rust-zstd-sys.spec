@@ -144,10 +144,10 @@ rm -rf zstd/
 %cargo_generate_buildrequires -a 
 echo "pkgconfig(libzstd)"
 echo "bindgen"
-echo "%{_bindir}/llvm-config-%{__isa_bits}"
+echo "%{_bindir}/llvm-config"
 
 %build
-export LLVM_CONFIG_PATH=%{_bindir}/llvm-config-%{__isa_bits}
+export LLVM_CONFIG_PATH=%{_bindir}/llvm-config
 %cargo_build -a
 bindgen %{_includedir}/zstd.h --ctypes-prefix ::libc --blacklist-type max_align_t --rustified-enum '.*' --use-core -o src/bindings.rs -- 
 bindgen %{_includedir}/zstd.h --blacklist-type max_align_t --rustified-enum '.*' --use-core -o src/bindings_std.rs -- 
@@ -157,7 +157,7 @@ bindgen %{_includedir}/zstd.h --blacklist-type max_align_t --rustified-enum '.*'
 
 %if %{with check}
 %check
-export LLVM_CONFIG_PATH=%{_bindir}/llvm-config-%{__isa_bits}
+export LLVM_CONFIG_PATH=%{_bindir}/llvm-config
 %cargo_test -a
 %endif
 
